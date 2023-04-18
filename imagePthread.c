@@ -80,7 +80,6 @@ void* convoluteThread(void* arg) {
             }
         }
     }
-    //free(args);
     return NULL;
 }
 
