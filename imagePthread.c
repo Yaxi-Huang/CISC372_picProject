@@ -93,9 +93,10 @@ void convolute(Image* srcImage, Image* destImage, Matrix algorithm) {
     const int numThreads = 4;
     pthread_t threads[numThreads];
     ThreadArgs args[numThreads];
+    int i = 0; j = 0;
     
-    for (int i = 0; i < numThreads; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (i = 0; i < numThreads; i++) {
+        for (j = 0; j < 3; j++) {
             memcpy(args[i].algorithm[j], algorithm[j], 3 * sizeof(float));
         }
         args[i].rowId = i;
