@@ -93,7 +93,7 @@ void convolute(Image* srcImage, Image* destImage, Matrix algorithm) {
     const int numThreads = 4;
     pthread_t threads[numThreads];
     ThreadArgs args[numThreads];
-    int i = 0; j = 0;
+    int i = 0; j = 0, k = 0;
     
     for (i = 0; i < numThreads; i++) {
         for (j = 0; j < 3; j++) {
@@ -109,9 +109,9 @@ void convolute(Image* srcImage, Image* destImage, Matrix algorithm) {
         }
     }
 
-    for (int i = 0; i < numThreads; i++) {
-        if (pthread_join(threads[i], NULL) != 0) {
-            fprintf(stderr, "Error joining thread %d\n", i);
+    for (k = 0; k < numThreads; k++) {
+        if (pthread_join(threads[k], NULL) != 0) {
+            fprintf(stderr, "Error joining thread %d\n", k);
             exit(EXIT_FAILURE);
         }
     }
